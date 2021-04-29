@@ -1,0 +1,42 @@
+ const [ansawer, setAnsawer] = useState('');
+ 
+ function handleChange(event){
+    let ansawer = event.target.value;
+    setAnsawer(ansawer);
+    
+  }
+
+  function submitResult(event){
+    if(event.key === 'Enter'){
+      console.log("submit => "+event.target.value);
+      setCounter(counter + 1);
+      
+      if(counter < multiplicador.length ){
+        let correct = multiplicando * multiplicador[counter];
+
+        if(correct === event.target.value){
+
+        }
+
+        let q = multiplicando +" X "+ multiplicador[counter] + " = ";
+        setQuestion(q);
+
+        event.target.value = "";
+        setAnsawer('');
+        makeAnsawer();
+      }else{
+        setQuestion("COMPLETADO");
+      }
+
+      
+    }
+  }
+  
+const ansawer_input = useRef(null);
+
+<section className="Ansawer-panel">
+        <div className="Ansawer">
+          {ansawer}
+        </div>
+      </section>
+<input type= "text" placeholder="Respuesta..." onChange={handleChange} onKeyDown={submitResult} ref={ansawer_input}></input>
